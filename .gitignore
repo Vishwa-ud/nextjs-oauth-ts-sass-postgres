@@ -43,3 +43,25 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# PostgreSQL data directories
+/pgadmin_data/
+/postgres_data/
+/database/pgadmin_data/
+/database/postgres_data/
+
+# Include with and without trailing slash
+pgadmin_data
+postgres_data
+
+# Prevent any nested instances
+**/pgadmin_data/
+**/postgres_data/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Environment files
+*.env
+.env

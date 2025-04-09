@@ -1,6 +1,7 @@
 # nextjs-oauth-ts-sass-postgres
 A Next.js application with OAuth authentication, built using TypeScript, styled with SASS, and powered by PostgreSQL. Secure and scalable authentication flow for modern web apps.
 link : [text](https://www.youtube.com/watch?v=TLGFTH4s_0Y)
+(12.31)continue
 # Instalation
 ```
 npx create-next-app@latest .
@@ -39,6 +40,35 @@ npm install --save-dev sass
 npm install --save-dev @types/nodemailer
 npm install --save-dev @types/pg
 ```
+# Docker Set up For PG DATABASE
+```
+docker ps
+```
+```
+mkdir database
+```
+Add Docker-compose.yml
+CD database
+```
+docker compose up -d 
+```
+- localhost:5050 (PG Admin)
+- uname - user@example.com
+- pwd - password
+### Create new server for set up pg database and connect
+- name = postgres_database
+- >Connections Host address = postgres
+- Save
+- Table (*)
+- > postgres-schema.sql
+- authdb > ctrl+shift+d (query)
+- copy schema
+- f5 (run)
+- > Tables
+- Account alt+shift+v (table view)
+
+
+- -d (run it in background / with out -d run in foregrounde)
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
