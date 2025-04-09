@@ -62,7 +62,7 @@ docker compose up -d
 - Table (*)
 - > postgres-schema.sql
 - authdb > ctrl+shift+d (query)
-- coppy schema
+- copy schema
 - f5 (run)
 - > Tables
 - Account alt+shift+v (table view)
