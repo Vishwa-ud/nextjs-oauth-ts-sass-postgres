@@ -40,4 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# ssl certificates  
 certificates
+
+# Database data directories
+database/postgres_data/
+database/pgadmin_data/

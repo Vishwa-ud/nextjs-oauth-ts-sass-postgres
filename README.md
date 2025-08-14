@@ -1,133 +1,209 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js OAuth with TypeScript, SASS & PostgreSQL
 
-## Getting Started
+A modern Next.js application featuring secure OAuth authentication, built with TypeScript, styled with SASS, and powered by PostgreSQL. This project provides a complete authentication solution with a scalable architecture for modern web applications.
 
-First, run the development server:
+## 🚀 Features
+
+- ✅ **OAuth Authentication** with AuthJS (NextAuth v5)
+- ✅ **TypeScript** for type safety
+- ✅ **SASS** for advanced styling
+- ✅ **PostgreSQL** database with Docker
+- ✅ **HTTPS Development** with SSL certificates
+- ✅ **Form Validation** with React Hook Form
+- ✅ **Email Integration** with Nodemailer
+- ✅ **Modern UI Components** with React Icons
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js 14+, TypeScript, SASS
+- **Authentication**: AuthJS (NextAuth v5)
+- **Database**: PostgreSQL with Docker
+- **Forms**: React Hook Form with resolvers
+- **Icons**: React Icons
+- **Email**: Nodemailer
+- **Development**: HTTPS with mkcert
+
+## 📋 Prerequisites
+
+Before you begin, ensure you have installed:
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [Docker](https://www.docker.com/) and Docker Compose
+- [Git](https://git-scm.com/)
+
+## 🚀 Quick Start
+
+### 1. Clone and Setup
 
 ```bash
-npm run dev
-# or
-yarn dev# nextjs-oauth-ts-sass-postgres
-A Next.js application with OAuth authentication, built using TypeScript, styled with SASS, and powered by PostgreSQL. Secure and scalable authentication flow for modern web apps.
-link : [text](https://www.youtube.com/watch?v=TLGFTH4s_0Y)
-(12.31)continue
-# Instalation
-## Start
-```
+# Clone the repository
+git clone <your-repo-url>
+cd nextjs-oauth-ts-sass-postgres
+
+# starting from scratch
 npx create-next-app@latest .
+
+# Install dependencies
+npm install
+
+# then
+npm run dev
 ```
 
-# Certificate
+### 2. SSL Certificate Setup (HTTPS Development)
 
-add this
+#### Option A: Using package.json script
+Add the following to your `package.json`:
+
+```json
+{
+  "scripts": {
+    "dev": "next dev --experimental-https"
+  }
+}
 ```
- "scripts": {
-    "dev": "next dev --experimental-https",
- }
-```
 
-## OR this 
+#### Option B: Manual mkcert Setup (Windows)
 
-## Download mkcert Manually
-
-1. Download mkcert from its GitHub releases page:
-   https://github.com/FiloSottile/mkcert/releases
-
+1. Download mkcert from [GitHub releases](https://github.com/FiloSottile/mkcert/releases)
 2. Download the Windows binary (`mkcert-v*-windows-amd64.exe`)
+3. Rename to `mkcert.exe` and add to your PATH or project directory
+4. Generate certificates:
 
-3. Rename it to `mkcert.exe` and move it to a folder in your PATH or the project directory
-
-4. Run from your project root:
 ```powershell
+# Install mkcert CA
 .\mkcert.exe -install
+
+# Generate localhost certificates
 .\mkcert.exe -key-file "certificates\localhost-key.pem" -cert-file "certificates\localhost.pem" localhost 127.0.0.1 ::1
 ```
 
-
-# additional dipendancies
-```
-npm install next-auth@beta
-npm install @auth/pg-adapter
-npm install @hookform/resolvers
-npm install pg
-npm install nodemailer
-npm install react-hook react-hook-form
-npm install react-icons
-npm install jsonwebtoken
-npm install --save-dev @types/jsonwebtoken
-npm install --save-dev sass
-npm install --save-dev @types/nodemailer
-npm install --save-dev @types/pg
-```
-# Docker Set up For PG DATABASE
-```
-docker ps
-```
-```
-mkdir database
-```
-Add Docker-compose.yml
-CD database
-```
-docker compose up -d 
-```
-- localhost:5050 (PG Admin)
-- uname - user@example.com
-- pwd - password
-### Create new server for set up pg database and connect
-- name = postgres_database
-- >Connections Host address = postgres
-- Save
-- Table (*)
-- > postgres-schema.sql
-- authdb > ctrl+shift+d (query)
-- copy schema
-- f5 (run)
-- > Tables
-- Account alt+shift+v (table view)
-
-
-- -d (run it in background / with out -d run in foregrounde)
-
-
-
-NEXT Auth Vs AuthJS
-
-Next auth update becume auth js
-
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
+### 3. Install Dependencies
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Core authentication dependencies
+npm install next-auth@beta @auth/pg-adapter
+
+# Form handling
+npm install @hookform/resolvers react-hook-form
+
+# Database and email
+npm install pg nodemailer
+
+# UI and utilities
+npm install react-icons jsonwebtoken
+
+# Development dependencies
+npm install --save-dev @types/jsonwebtoken @types/nodemailer @types/pg sass
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 4. Database Setup with Docker
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Create database directory
+mkdir database
+cd database
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Start PostgreSQL and pgAdmin containers
+docker compose up -d
 
-## Learn More
+# Verify containers are running
+docker ps
+```
 
-To learn more about Next.js, take a look at the following resources:
+#### Database Configuration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Access pgAdmin**: Navigate to [http://localhost:5050](http://localhost:5050)
+   - **Username**: `user@example.com`
+   - **Password**: `password`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Create PostgreSQL Server Connection**:
+   - **Name**: `postgres_database`
+   - **Host**: `postgres`
+   - **Port**: `5432`
+   - **Username**: `postgres`
+   - **Password**: `password`
 
-## Deploy on Vercel
+3. **Initialize Database Schema**:
+   - Navigate to the `authdb` database
+   - Open Query Tool (`Ctrl+Shift+D`)
+   - Copy and execute the SQL from `postgres-schema.sql`
+   - Run with `F5`
+   - Verify tables: `users`, `accounts`, `verification_tokens`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 5. Run the Application
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+# First install dependencies (if not already done)
+npm install
+
+# Start the development server
+npm run dev
+```
+
+Open [https://localhost:3000](https://localhost:3000) in your browser to see the application.
+
+## 🔧 Project Structure
+
+```
+├── src/
+│   └── app/
+│       ├── layout.tsx          # Root layout
+│       ├── page.tsx           # Home page
+│       ├── globals.css        # Global styles
+│       └── favicon.ico        # App icon
+├── certificates/
+│   ├── localhost.pem          # SSL certificate
+│   └── localhost-key.pem      # SSL private key
+├── database/
+│   ├── docker-compose.yml     # Docker services
+│   └── postgres-schema.sql    # Database schema
+├── public/                    # Static assets
+├── package.json
+├── tsconfig.json             # TypeScript config
+├── next.config.ts            # Next.js config
+└── README.md
+```
+
+## 🔐 Authentication Flow
+
+This project uses **AuthJS** (the evolution of NextAuth.js) for authentication:
+
+- **OAuth Providers**: Support for Google, GitHub, and other providers
+- **Database Sessions**: Secure session management with PostgreSQL
+- **Email Verification**: Email-based authentication flow
+- **Type Safety**: Full TypeScript support for auth configuration
+
+## 🐳 Docker Services
+
+The project includes the following Docker services:
+
+- **PostgreSQL**: Main database server
+- **pgAdmin**: Web-based database administration tool
+
+## 📚 Learn More
+
+### Next.js Resources
+- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API
+- [Learn Next.js](https://nextjs.org/learn) - Interactive Next.js tutorial
+
+### Authentication Resources
+- [AuthJS Documentation](https://authjs.dev/) - Complete authentication guide
+- [AuthJS PostgreSQL Adapter](https://authjs.dev/reference/adapter/pg) - Database integration
+
+### Related Tutorial
+- [YouTube Tutorial](https://www.youtube.com/watch?v=TLGFTH4s_0Y) - Video walkthrough
+- [GitHub Repository](https://github.com/JacksonZ03/authjs-youtube-tutorial) - Reference implementation
+
+## 🚀 Deployment
+
+The easiest way to deploy your Next.js app is using the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
+
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).
