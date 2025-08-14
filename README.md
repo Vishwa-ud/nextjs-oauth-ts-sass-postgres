@@ -7,6 +7,103 @@ First, run the development server:
 ```bash
 npm run dev
 # or
+yarn dev# nextjs-oauth-ts-sass-postgres
+A Next.js application with OAuth authentication, built using TypeScript, styled with SASS, and powered by PostgreSQL. Secure and scalable authentication flow for modern web apps.
+link : [text](https://www.youtube.com/watch?v=TLGFTH4s_0Y)
+(12.31)continue
+# Instalation
+## Start
+```
+npx create-next-app@latest .
+```
+
+# Certificate
+
+add this
+```
+ "scripts": {
+    "dev": "next dev --experimental-https",
+ }
+```
+
+## OR this 
+
+## Download mkcert Manually
+
+1. Download mkcert from its GitHub releases page:
+   https://github.com/FiloSottile/mkcert/releases
+
+2. Download the Windows binary (`mkcert-v*-windows-amd64.exe`)
+
+3. Rename it to `mkcert.exe` and move it to a folder in your PATH or the project directory
+
+4. Run from your project root:
+```powershell
+.\mkcert.exe -install
+.\mkcert.exe -key-file "certificates\localhost-key.pem" -cert-file "certificates\localhost.pem" localhost 127.0.0.1 ::1
+```
+
+
+# additional dipendancies
+```
+npm install next-auth@beta
+npm install @auth/pg-adapter
+npm install @hookform/resolvers
+npm install pg
+npm install nodemailer
+npm install react-hook react-hook-form
+npm install react-icons
+npm install jsonwebtoken
+npm install --save-dev @types/jsonwebtoken
+npm install --save-dev sass
+npm install --save-dev @types/nodemailer
+npm install --save-dev @types/pg
+```
+# Docker Set up For PG DATABASE
+```
+docker ps
+```
+```
+mkdir database
+```
+Add Docker-compose.yml
+CD database
+```
+docker compose up -d 
+```
+- localhost:5050 (PG Admin)
+- uname - user@example.com
+- pwd - password
+### Create new server for set up pg database and connect
+- name = postgres_database
+- >Connections Host address = postgres
+- Save
+- Table (*)
+- > postgres-schema.sql
+- authdb > ctrl+shift+d (query)
+- copy schema
+- f5 (run)
+- > Tables
+- Account alt+shift+v (table view)
+
+
+- -d (run it in background / with out -d run in foregrounde)
+
+
+
+NEXT Auth Vs AuthJS
+
+Next auth update becume auth js
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
 yarn dev
 # or
 pnpm dev
