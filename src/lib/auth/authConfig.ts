@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
-import Nodemailer from "next-auth/providers/nodemailer";
+import Resend from "next-auth/providers/resend";
 import { pool } from "@/src/lib/postgres";
 import PostgresAdapter from "@auth/pg-adapter";
 import { setName } from "@/src/lib/auth/setNameServerAction";
@@ -25,15 +25,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
       allowDangerousEmailAccountLinking: true, // Allow automatic linking of users table to accounts table in database - not dangerous when used with OAuth providers that already perform email verification (like Google)
     }),
-    Nodemailer({
-      server: {
-        host: process.env.EMAIL_SERVER_HOST,
-        port: parseInt(process.env.EMAIL_SERVER_PORT!, 10),
-        auth: {
-          user: process.env.EMAIL_SERVER_USER,
-          pass: process.env.EMAIL_SERVER_PASSWORD,
-        },
-      },
+    Resend({
+      apiKey: process.env.RESEND_API_KEY,
       from: process.env.EMAIL_FROM,
     }),
   ],
@@ -43,7 +36,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         token.name = session.name;
 
         try {
-          await setName(token.name);
+          if (token.name) {
+            await setName(token.name);
+          }
         } catch (error) {
           console.error("Failed to set user name:", error);
         }

@@ -25,7 +25,7 @@ export const SignInPage: React.FC = () => {
       <div className="signin-card">
         <h2>Sign In</h2>
         <div className="form-container">
-          <form className="email-signin-form">
+          <form className="email-signin-form" onSubmit={handleSubmit}>
             <input
               className="form-input"
               type="email"
@@ -37,7 +37,7 @@ export const SignInPage: React.FC = () => {
               disabled={isPending}
               required
             />
-            <button className="submit-button" type="submit" onSubmit={handleSubmit}>
+            <button className="submit-button" type="submit">
               Sign in with email
             </button>
           </form>
