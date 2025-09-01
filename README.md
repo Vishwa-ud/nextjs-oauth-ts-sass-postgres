@@ -169,8 +169,25 @@ Open [https://localhost:3000](https://localhost:3000) in your browser to see the
 This project uses **AuthJS** (the evolution of NextAuth.js) for authentication:
 
 - **OAuth Providers**: Support for Google, GitHub, and other providers
+
+GOOGLE OAuth
+https://console.cloud.google.com/apis/
+
+
 - **Database Sessions**: Secure session management with PostgreSQL
 - **Email Verification**: Email-based authentication flow
+      https://resend.com/
+https://resend.com/docs/send-with-nextjs
+
+
+AUTH_SECRET GENERATE
+Open GITBASH Terminal
+``
+openssl rand -base64 33
+``
+then generate random secret copy past it in your env
+
+
 - **Type Safety**: Full TypeScript support for auth configuration
 
 ## 🐳 Docker Services
