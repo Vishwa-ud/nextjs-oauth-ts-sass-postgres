@@ -87,7 +87,10 @@ npm install next-auth@beta @auth/pg-adapter
 npm install @hookform/resolvers react-hook-form
 
 # Database and email
-npm install pg nodemailer
+npm install pg nodemailer 
+
+#if using resend for email authentication
+npm install resend
 
 # UI and utilities
 npm install react-icons jsonwebtoken
@@ -176,15 +179,21 @@ https://console.cloud.google.com/apis/
 
 - **Database Sessions**: Secure session management with PostgreSQL
 - **Email Verification**: Email-based authentication flow
-      https://resend.com/
-https://resend.com/docs/send-with-nextjs
+      
+```bash
+# email authentication using resend Signin and Generate ClientID and Api key put it in env
+# https://resend.com/ | https://resend.com/docs/send-with-nextjs
+# then install resend
+npm install resend
+```
 
 
-AUTH_SECRET GENERATE
+
+- **AUTH_SECRET GENERATE in env**
 Open GITBASH Terminal
-``
+```bash
 openssl rand -base64 33
-``
+```
 then generate random secret copy past it in your env
 
 
