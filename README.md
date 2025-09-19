@@ -216,10 +216,6 @@ The project includes the following Docker services:
 - [AuthJS Documentation](https://authjs.dev/) - Complete authentication guide
 - [AuthJS PostgreSQL Adapter](https://authjs.dev/reference/adapter/pg) - Database integration
 
-### Related Tutorial
-- [YouTube Tutorial](https://www.youtube.com/watch?v=TLGFTH4s_0Y) - Video walkthrough
-- [GitHub Repository](https://github.com/JacksonZ03/authjs-youtube-tutorial) - Reference implementation
-
 ## 🚀 Deployment
 
 The easiest way to deploy your Next.js app is using the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
