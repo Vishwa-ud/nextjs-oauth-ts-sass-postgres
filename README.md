@@ -49,6 +49,34 @@ npm install
 npm run dev
 ```
 
+
+###  .env Template
+
+```bash
+NEXTAUTH_URL:"https://localhost:3000/"
+
+##==========================================#
+##  IDENTITY ACCESS AND MANAGEMENT          #
+##==========================================#
+EMAIL_FROM="" # ex: onboarding@resend.dev
+RESEND_API_KEY="" # Generate API Key
+
+AUTH_GOOGLE_ID="" # https://console.cloud.google.com/apis/
+AUTH_GOOGLE_SECRET="" $ https://console.cloud.google.com/apis/
+
+AUTH_SECRET=""
+
+##==========================================#
+##  POSTGRES DATABASE CONFIG                #
+##==========================================#
+AUTH_DATABASE_HOST="localhost"
+AUTH_DATABASE_PORT=5432
+AUTH_DATABASE_NAME="auth_db"
+AUTH_DATABASE_USER="user"
+AUTH_DATABASE_PASSWORD="password"
+
+```
+
 ### 2. SSL Certificate Setup (HTTPS Development)
 
 #### Option A: Using package.json script
@@ -164,6 +192,7 @@ Open [https://localhost:3000](https://localhost:3000) in your browser to see the
 ├── package.json
 ├── tsconfig.json             # TypeScript config
 ├── next.config.ts            # Next.js config
+├── .env                      #.env
 └── README.md
 ```
 
